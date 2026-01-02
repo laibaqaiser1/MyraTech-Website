@@ -5,8 +5,6 @@ import { useInView } from 'react-intersection-observer'
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import { Mail, Phone, MapPin, Send, Clock, Users, Award } from 'lucide-react'
-import emailjs from '@emailjs/browser'
-import { EMAILJS_CONFIG } from '../config/emailjs'
 
 interface ContactForm {
   name: string
@@ -31,32 +29,34 @@ const Contact = () => {
     setSubmitError('')
     
     try {
-      // Initialize EmailJS with your public key
-      emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY)
-      
-      const templateParams = {
-        from_name: data.name,
-        from_email: data.email,
-        company: data.company || 'Not provided',
-        message: data.message,
-        to_email: EMAILJS_CONFIG.COMPANY_EMAIL,
-      }
+      // Send email using API route
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          company: data.company || '',
+          message: data.message,
+        }),
+      })
 
-      // Send email using EmailJS
-      const result = await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATE_ID,
-        templateParams
-      )
+      const result = await response.json()
 
-      if (result.status === 200) {
+      if (response.ok && result.success) {
         setIsSubmitted(true)
         reset()
         setTimeout(() => setIsSubmitted(false), 5000)
+      } else {
+        throw new Error(result.error || 'Failed to send email')
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Email sending failed:', error)
-      setSubmitError('Failed to send message. Please try again or contact us directly.')
+      setSubmitError(
+        error.message || 'Failed to send message. Please try again or contact us directly.'
+      )
     } finally {
       setIsSubmitting(false)
     }
@@ -98,8 +98,7 @@ const Contact = () => {
                   <Mail className="h-6 w-6 text-primary-600 mt-1" />
                   <div>
                     <h4 className="font-medium text-neutral-900">Email</h4>
-                    <p className="text-neutral-600">info@myratech.com</p>
-                    <p className="text-neutral-600">support@myratech.com</p>
+                    <p className="text-neutral-600">laibaqaiser89@gmail.com</p>
                   </div>
                 </div>
                 

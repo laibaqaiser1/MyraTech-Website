@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { FileText, Download, Users, Award, Clock, CheckCircle } from 'lucide-react'
+import { FileText, Download, Users, Award, Clock } from 'lucide-react'
 
 const Resume = () => {
   const { ref, inView } = useInView({
@@ -19,19 +19,6 @@ const Resume = () => {
     link.click()
     document.body.removeChild(link)
   }
-
-  const capabilities = [
-    'Custom Web Application Development',
-    'Mobile App Development (iOS & Android)',
-    'Cloud Infrastructure & DevOps',
-    'Database Design & Optimization',
-    'API Development & Integration',
-    'Business Process Automation',
-    'Cybersecurity Solutions',
-    'Digital Transformation Consulting',
-    '24/7 Technical Support',
-    'Agile Development Methodology'
-  ]
 
   return (
     <section id="resume" className="section-padding bg-white">
@@ -69,28 +56,6 @@ const Resume = () => {
             
             <div className="mt-8 text-sm text-neutral-500">
               <p>Last updated: January 2025</p>
-            </div>
-          </div>
-
-          {/* Company Capabilities Grid */}
-          <div className="mt-16">
-            <h3 className="text-2xl font-semibold text-neutral-900 mb-8">
-              What We Offer
-            </h3>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              {capabilities.map((capability, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-md border border-neutral-200 hover:shadow-lg transition-all duration-300"
-                >
-                  <CheckCircle className="h-5 w-5 text-primary-600 flex-shrink-0" />
-                  <span className="text-neutral-700 font-medium">{capability}</span>
-                </motion.div>
-              ))}
             </div>
           </div>
 

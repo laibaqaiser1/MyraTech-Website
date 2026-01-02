@@ -39,11 +39,7 @@ const About = () => {
             enterprise applications, MyraTech is your trusted partner in digital innovation.
           </p>
           
-          <div className="grid md:grid-cols-3 gap-8 mt-12">
-            <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
-              <div className="text-3xl font-bold text-secondary-400 mb-2">50+</div>
-              <div className="text-neutral-200">Projects Completed</div>
-            </div>
+          <div className="grid md:grid-cols-2 gap-8 mt-12 max-w-2xl mx-auto">
             <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
               <div className="text-3xl font-bold text-secondary-400 mb-2">100%</div>
               <div className="text-neutral-200">Client Satisfaction</div>

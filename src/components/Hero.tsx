@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ChevronDown, Mail, Phone, MapPin, Users, Award, Clock } from 'lucide-react'
+import { ChevronDown, Mail, Phone, MapPin, Award, Clock } from 'lucide-react'
 import Image from 'next/image'
 
 const Hero = () => {
@@ -40,14 +40,7 @@ const Hero = () => {
               </p>
 
               {/* Company Stats */}
-              <div className="grid grid-cols-3 gap-6 mb-8">
-                <div className="text-center">
-                  <div className="flex items-center justify-center mb-2">
-                    <Users className="h-6 w-6 text-primary-600" />
-                  </div>
-                  <div className="text-2xl font-bold text-primary-600">50+</div>
-                  <div className="text-sm text-neutral-600">Projects Delivered</div>
-                </div>
+              <div className="grid grid-cols-2 gap-6 mb-8">
                 <div className="text-center">
                   <div className="flex items-center justify-center mb-2">
                     <Award className="h-6 w-6 text-primary-600" />
@@ -68,7 +61,7 @@ const Hero = () => {
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8 text-sm text-neutral-600">
                 <div className="flex items-center gap-2">
                   <Mail className="h-4 w-4" />
-                  <span>info@myratech.com</span>
+                  <span>laibaqaiser89@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone className="h-4 w-4" />
